@@ -101,5 +101,5 @@ int main() {
     report("ZHPR2", creal(zAp[0]) != 10.0);
 
     printf("=== ALL TESTS FINISHED ===\n");
-    return 0;
+    return 1;
 }
