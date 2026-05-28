@@ -1,0 +1,28 @@
+name: BLAS CI
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install compiler
+        run: |
+          sudo apt update
+          sudo apt install -y gcc make
+
+      - name: Build tests
+        run: |
+          gcc tests/test_suite.c tests/broken_lib.c -o tests_runner
+
+      - name: Run tests
+        run: |
+          ./tests_runner
